@@ -1,7 +1,7 @@
 import homepic from "../assets/imghome.webp";
 import logo from "../assets/fino4.webp";
 import couchL from "../assets/couchloop.mp4";
-import bedV from "../assets/bedvideo.mp4";
+import bedV from "../assets/bedvideo4.mp4";
 import Navbar from "./Navbar";
 
 const Home: React.FC = () => {
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
           Qualità e design dal 1991.
         </div>
       </div>
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-[95vh] w-full overflow-hidden">
         {/* Video di sfondo */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -56,7 +56,8 @@ const Home: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
         </div>
       </div>
-            <div className="relative h-screen w-full overflow-hidden">
+
+      <div className="relative h-[95vh] w-full overflow-hidden">
         {/* Video di sfondo */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
