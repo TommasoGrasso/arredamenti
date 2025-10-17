@@ -1,7 +1,8 @@
 import homepic from "../assets/imghome.webp";
 import logo from "../assets/fino4.webp";
 import couchL from "../assets/couchloop.mp4";
-import bedV from "../assets/bedvideo4.mp4";
+import bedV from "../assets/bedvideo5.mp4";
+import arrV from "../assets/arredovideo.mp4";
 import Navbar from "./Navbar";
 
 const Home: React.FC = () => {
@@ -68,7 +69,24 @@ const Home: React.FC = () => {
           playsInline
           preload="auto"
         ></video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
+        </div>
+      </div>
+
+        <div className="relative h-[95vh] w-full overflow-hidden">
+        {/* Video di sfondo */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src={arrV}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        ></video>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
         </div>
