@@ -41,55 +41,36 @@ const Home: React.FC = () => {
           Qualità e design dal 1991.
         </div>
       </div>
-      <div className="relative h-[95vh] w-full overflow-hidden">
-        {/* Video di sfondo */}
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src={couchL}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        ></video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
-        </div>
-      </div>
-
-      <div className="relative h-[95vh] w-full overflow-hidden">
-        {/* Video di sfondo */}
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src={bedV}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        ></video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
-        </div>
-      </div>
-
-        <div className="relative h-[95vh] w-full overflow-hidden">
-        {/* Video di sfondo */}
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src={arrV}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        ></video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"></h1>
-        </div>
+      {/* SEZIONI VIDEO CON EFFETTO SCROLL OVERLAY */}
+      <div className="relative">
+        {[
+          { src: couchL, title: "AREA GIORNO", overlay: "bg-black/30" },
+          { src: bedV, title: "AREA NOTTE", overlay: "bg-black/80" },
+          { src: arrV, title: "ARREDO", overlay: "bg-black/60" },
+        ].map((video, index) => (
+          <section
+            key={index}
+            className="h-screen sticky top-0 overflow-hidden"
+          >
+            <video
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              src={video.src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+            />
+            <div
+              className={`absolute top-0 left-0 w-full h-full ${video.overlay}`}
+            ></div>
+            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+                {video.title}
+              </h1>
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );
