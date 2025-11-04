@@ -44,13 +44,31 @@ const Home: React.FC = () => {
       {/* SEZIONI VIDEO CON EFFETTO SCROLL OVERLAY */}
       <div className="relative">
         {[
-          { src: couchL, title: "AREA GIORNO", overlay: "bg-black/30" },
-          { src: bedV, title: "AREA NOTTE", overlay: "bg-black/80" },
-          { src: arrV, title: "ARREDO", overlay: "bg-black/60" },
-        ].map((video, index) => (
+          {
+            src: couchL,
+            title: "AREA GIORNO",
+            describtion:
+              "Design e funzionalità per vivere ogni spazio al meglio.",
+            overlay: "bg-black/30",
+          },
+          {
+            src: bedV,
+            title: "AREA NOTTE",
+            describtion: "Comfort e stile per i tuoi momenti di riposo.",
+            overlay: "bg-black/80",
+          },
+          {
+            src: arrV,
+            title: "COMPLETAMENTI",
+            describtion: "Soluzioni d’arredo su misura per ogni ambiente.",
+            overlay: "bg-black/60",
+          },
+        ].map((video, index, arr) => (
           <section
             key={index}
-            className="h-screen sticky top-0 overflow-hidden"
+            className={`h-screen sticky top-0 overflow-hidden ${
+              index !== arr.length - 1 ? "mb-[70vh]" : ""
+            }`}
           >
             <video
               className="absolute top-0 left-0 w-full h-full object-cover"
@@ -64,13 +82,31 @@ const Home: React.FC = () => {
             <div
               className={`absolute top-0 left-0 w-full h-full ${video.overlay}`}
             ></div>
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+            <div className="relative z-10 flex flex-col items-start justify-center h-full text-left text-white px-8">
+              <h1 className="text-4xl md:text-6xl font-semibold mb-2 drop-shadow-lg ">
                 {video.title}
               </h1>
+              <p className="font-light md:text-xl opacity-90">
+                {video.describtion}
+              </p>
+              <div className="flex gap-4 pt-5">
+                <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
+                  <span className="absolute left-0 top-0 h-full w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
+                  <span className="relative z-10">CATALOGO COMPLETO</span>
+                </button>
+                <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
+                  <span className="absolute left-0 top-0 h-full w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-95 0" />
+                  <span className="relative z-10">
+                    RICHIEDI INFORMAZIONI
+                  </span>
+                </button>
+              </div>
             </div>
           </section>
         ))}
+
+        {/* Spazio extra per permettere l’ultimo overlay di restare visibile */}
+        <div className="h-[100vh]"></div>
       </div>
     </div>
   );
