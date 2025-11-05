@@ -3,6 +3,10 @@ import logo from "../assets/fino4.webp";
 import couchL from "../assets/couchloop.mp4";
 import bedV from "../assets/bedvideo5.mp4";
 import arrV from "../assets/arredovideo.mp4";
+import modifiche from "../assets/modifica.jpg";
+import montaggio from "../assets/montaggi.webp";
+import progettazione from "../assets/progettazione.jpg";
+import assistenza from "../assets/assistenza.webp";
 import Navbar from "./Navbar";
 
 const Home: React.FC = () => {
@@ -46,20 +50,20 @@ const Home: React.FC = () => {
         {[
           {
             src: couchL,
-            title: "AREA GIORNO",
+            title: "Area giorno",
             describtion:
               "Design e funzionalità per vivere ogni spazio al meglio.",
             overlay: "bg-black/30",
           },
           {
             src: bedV,
-            title: "AREA NOTTE",
+            title: "Area notte",
             describtion: "Comfort e stile per i tuoi momenti di riposo.",
             overlay: "bg-black/80",
           },
           {
             src: arrV,
-            title: "COMPLETAMENTI",
+            title: "Completamenti",
             describtion: "Soluzioni d’arredo su misura per ogni ambiente.",
             overlay: "bg-black/60",
           },
@@ -83,7 +87,7 @@ const Home: React.FC = () => {
               className={`absolute top-0 left-0 w-full h-full ${video.overlay}`}
             ></div>
             <div className="relative z-10 flex flex-col items-start justify-center h-full text-left text-white px-8">
-              <h1 className="text-4xl md:text-6xl font-semibold mb-2 drop-shadow-lg ">
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                 {video.title}
               </h1>
               <p className="font-light md:text-xl opacity-90">
@@ -96,17 +100,66 @@ const Home: React.FC = () => {
                 </button>
                 <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
                   <span className="absolute left-0 top-0 h-full w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-95 0" />
-                  <span className="relative z-10">
-                    RICHIEDI INFORMAZIONI
-                  </span>
+                  <span className="relative z-10">RICHIEDI INFORMAZIONI</span>
                 </button>
               </div>
             </div>
           </section>
         ))}
-
-        {/* Spazio extra per permettere l’ultimo overlay di restare visibile */}
         <div className="h-[100vh]"></div>
+      </div>
+      <div className="flex items-start justify-between">
+        {/* LOGO FINO COME LA NAVBAR MA FISSO */}
+        <div className="w-1/2 pr-8 mt-20">
+          <div className="pl-15 inline-flex flex-col items-start cursor-default">
+            <div className="w-[140px] h-20 relative">
+              <div className="absolute top-0 left-0 inline-flex items-center origin-left scale-80">
+                <div className="w-20 h-20 flex items-center justify-center border-2 border-red-950 relative">
+                  <span className="text-red-950 text-5xl font-[Oswald] font-light tracking-widest transform translate-x-6 translate-y-3">
+                    F
+                  </span>
+                </div>
+                <span className="mt-6 self-center opacity-100 translate-x-0 text-red-950 text-5xl font-[Oswald] font-light tracking-widest">
+                  INO
+                </span>
+              </div>
+            </div>
+            <div className="w-full flex justify-center mt-1 transition-all duration-300 ease-out delay-300">
+              <span className="opacity-100 translate-y-0 text-red-950 text-1.5xl font-[Oswald] font-light tracking-[0.3em] z-20 relative whitespace-nowrap">
+                ARREDAMENTI
+              </span>
+            </div>
+          </div>
+          {/* FINE */}
+          <p>Sinonimo di stile, qualità e attenzione al cliente.</p>
+          <p>
+            Designer esperti e servizi su misura trasformano ogni spazio in un
+            progetto d’arredo esclusivo e curato in ogni dettaglio.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-20 w-1/2 items-center">
+          <img
+            src={montaggio}
+            alt="Montaggio"
+            className="w-1/1 h-auto shadow-md object-cover"
+          />
+          <img
+            src={assistenza}
+            alt="Assistenza"
+            className="w-1/1 h-auto shadow-md object-cover"
+          />
+          <img
+            src={modifiche}
+            alt="Modifiche"
+            className="w-1/1 h-auto shadow-md object-cover"
+          />
+          <img
+            src={progettazione}
+            alt="Progettazione"
+            className="w-1/1 h-auto shadow-md object-cover"
+          />
+        </div>
       </div>
     </div>
   );
