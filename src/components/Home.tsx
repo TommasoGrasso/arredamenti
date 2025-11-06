@@ -7,7 +7,7 @@ import modifiche from "../assets/modifica.jpg";
 import montaggio from "../assets/montaggi.webp";
 import progettazione from "../assets/progettazione.jpg";
 import assistenza from "../assets/assistenza.webp";
-import Navbar from "./Navbar";
+import NavbarTry from "./NavbarTry";
 
 const Home: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       className="relative h-screen bg-cover bg-center lazyload--progressive lazyautosizes lazyloaded"
       style={{ backgroundImage: `url(${homepic})` }}
     >
-      <Navbar />
+      <NavbarTry />
 
       <div className="absolute inset-0 bg-black opacity-45"></div>
       <div className="flex items-center gap-25 flex-col justify-center h-full">
@@ -109,56 +109,114 @@ const Home: React.FC = () => {
         <div className="h-[100vh]"></div>
       </div>
       <div className="flex items-start justify-between">
-        {/* LOGO FINO COME LA NAVBAR MA FISSO */}
-        <div className="w-1/2 pr-8 mt-20">
+        {/* SINISTRA - TESTO FISSO */}
+        <div className="w-1/2 pr-8 mt-20 sticky top-20 h-fit self-start">
           <div className="pl-15 inline-flex flex-col items-start cursor-default">
             <div className="w-[140px] h-20 relative">
               <div className="absolute top-0 left-0 inline-flex items-center origin-left scale-80">
-                <div className="w-20 h-20 flex items-center justify-center border-2 border-red-950 relative">
-                  <span className="text-red-950 text-5xl font-[Oswald] font-light tracking-widest transform translate-x-6 translate-y-3">
+                <div className="w-20 h-20 flex items-center justify-center border-2 border-black relative">
+                  <span className="text-black text-5xl font-[Oswald] font-light tracking-widest transform translate-x-6 translate-y-3">
                     F
                   </span>
                 </div>
-                <span className="mt-6 self-center opacity-100 translate-x-0 text-red-950 text-5xl font-[Oswald] font-light tracking-widest">
+                <span className="mt-6 self-center opacity-100 translate-x-0 text-black text-5xl font-[Oswald] font-light tracking-widest">
                   INO
                 </span>
               </div>
             </div>
             <div className="w-full flex justify-center mt-1 transition-all duration-300 ease-out delay-300">
-              <span className="opacity-100 translate-y-0 text-red-950 text-1.5xl font-[Oswald] font-light tracking-[0.3em] z-20 relative whitespace-nowrap">
+              <span className="opacity-100 translate-y-0 text-black text-1.5xl font-[Oswald] font-light tracking-[0.3em] z-20 relative whitespace-nowrap">
                 ARREDAMENTI
               </span>
             </div>
           </div>
-          {/* FINE */}
-          <p>Sinonimo di stile, qualità e attenzione al cliente.</p>
-          <p>
+
+          <p className="text-[clamp(16px,2.5vw,32px)] text-red-950 font-semibold pt-10 w-2/3 pl-15">
+            Sinonimo di stile, qualità e attenzione al cliente.
+          </p>
+          <p className="text-[clamp(14px,1.5vw,24px)] font-light pt-10 w-2/3 pl-15">
             Designer esperti e servizi su misura trasformano ogni spazio in un
             progetto d’arredo esclusivo e curato in ogni dettaglio.
           </p>
+          <div className="pt-10 pl-15">
+            <button className="relative px-6 py-2 font-semibold tracking-widest overflow-hidden group bg-white">
+              <span className="absolute left-0 top-0 h-full w-1/4 bg-red-950 transition-all duration-500 ease-in-out group-hover:w-full" />
+              <span className="relative z-10 text-white mix-blend-difference">
+                CONTATTACI
+              </span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-20 w-1/2 items-center">
-          <img
-            src={montaggio}
-            alt="Montaggio"
-            className="w-1/1 h-auto shadow-md object-cover"
-          />
-          <img
-            src={assistenza}
-            alt="Assistenza"
-            className="w-1/1 h-auto shadow-md object-cover"
-          />
-          <img
-            src={modifiche}
-            alt="Modifiche"
-            className="w-1/1 h-auto shadow-md object-cover"
-          />
-          <img
-            src={progettazione}
-            alt="Progettazione"
-            className="w-1/1 h-auto shadow-md object-cover"
-          />
+        {/* DESTRA - IMMAGINI SCORREVOLI */}
+        <div className="flex flex-col gap-10 sm:gap-15 lg:gap-20 w-full lg:w-1/2 items-center">
+          <div className="relative w-full">
+            <img
+              src={montaggio}
+              alt="Montaggio"
+              className="w-full h-auto shadow-md object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
+              <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
+                Consegna e montaggio
+              </h3>
+              <p className="text-white text-xs sm:text-sm lg:text-base font-light">
+                Consegna rapida e montaggio curato esclusivamente da personale
+                qualificato, per un servizio preciso e senza pensieri.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative w-full">
+            <img
+              src={modifiche}
+              alt="Modifiche"
+              className="w-full h-auto shadow-md object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
+              <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
+                Modifiche su misura
+              </h3>
+              <p className="text-white text-xs sm:text-sm lg:text-base font-light">
+                Progettiamo ambienti unici, studiati intorno a te e agli spazi
+                in cui vivi. Design su misura, senza compromessi.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative w-full">
+            <img
+              src={assistenza}
+              alt="Assistenza"
+              className="w-full h-auto shadow-md object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
+              <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
+                Assistenza post vendita
+              </h3>
+              <p className="text-white text-xs sm:text-sm lg:text-base font-light">
+                Sempre al tuo fianco, anche dopo l'acquisto. Assistenza
+                qualificata e supporto dedicato in ogni fase.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative w-full">
+            <img
+              src={progettazione}
+              alt="Progettazione"
+              className="w-full h-auto shadow-md object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
+              <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
+                Progettazione
+              </h3>
+              <p className="text-white text-xs sm:text-sm lg:text-base font-light">
+                Soluzioni d'arredo personalizzate, studiate per armonizzare
+                design, comfort e spazi della tua casa.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
