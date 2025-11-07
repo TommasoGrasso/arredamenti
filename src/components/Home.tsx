@@ -7,7 +7,7 @@ import modifiche from "../assets/modifica.jpg";
 import montaggio from "../assets/montaggi.webp";
 import progettazione from "../assets/progettazione.jpg";
 import assistenza from "../assets/assistenza.webp";
-import NavbarTry from "./NavbarTry";
+import Navbar from "./navbar";
 
 const Home: React.FC = () => {
   return (
@@ -15,8 +15,7 @@ const Home: React.FC = () => {
       className="relative h-screen bg-cover bg-center lazyload--progressive lazyautosizes lazyloaded"
       style={{ backgroundImage: `url(${homepic})` }}
     >
-      <NavbarTry />
-
+      <Navbar />
       <div className="absolute inset-0 bg-black opacity-45"></div>
       <div className="flex items-center gap-25 flex-col justify-center h-full">
         <img
@@ -31,17 +30,17 @@ const Home: React.FC = () => {
       </div>
       <div>
         <div className="p-10 pb-2 flex items-center justify-center bg-white">
-          <span className="w-2/3 font-bold text-black text-center block text-[4vw] leading-tight">
-            <span className="text-red-950 block text-left w-full">
+          <span className="w-2/3 font-bold text-black text-center block text-[6vw] sm:text-[5vw] md:text-[4vw] leading-tight">
+            <span className="text-red-950 block text-left w-full whitespace-nowrap -ml-10 sm:ml-0">
               Fino Arredamenti
             </span>
-            <span className="block text-right">
+            <span className="block text-right whitespace-nowrap ">
               l’abito su misura per <p></p> la tua
               <span className="text-red-950"> casa</span>.
             </span>
           </span>
         </div>
-        <div className="flex justify-center font-extralight text-[2.5vw] pb-9">
+        <div className="flex justify-center font-extralight text-[4vw] sm:text-[3vw] md:text-[2.5vw] pb-9">
           Qualità e design dal 1991.
         </div>
       </div>
@@ -63,7 +62,7 @@ const Home: React.FC = () => {
           },
           {
             src: arrV,
-            title: "Completamenti",
+            title: "Arredo",
             describtion: "Soluzioni d’arredo su misura per ogni ambiente.",
             overlay: "bg-black/60",
           },
@@ -95,11 +94,11 @@ const Home: React.FC = () => {
               </p>
               <div className="flex gap-4 pt-5">
                 <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
-                  <span className="absolute left-0 top-0 h-full w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
+                  <span className="absolute left-0 top-0 h-full w-1/3 sm:w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
                   <span className="relative z-10">CATALOGO COMPLETO</span>
                 </button>
                 <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
-                  <span className="absolute left-0 top-0 h-full w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-95 0" />
+                  <span className="absolute left-0 top-0 h-full w-1/3 sm:w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
                   <span className="relative z-10">RICHIEDI INFORMAZIONI</span>
                 </button>
               </div>
@@ -108,10 +107,10 @@ const Home: React.FC = () => {
         ))}
         <div className="h-[100vh]"></div>
       </div>
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between px-4 py-8 lg:px-0 lg:py-0">
         {/* SINISTRA - TESTO FISSO */}
-        <div className="w-1/2 pr-8 mt-20 sticky top-20 h-fit self-start">
-          <div className="pl-15 inline-flex flex-col items-start cursor-default">
+        <div className="w-full pt-10 lg:w-1/2 lg:pr-8 lg:mt-20 lg:sticky lg:top-20 lg:h-fit lg:self-start mb-8 lg:mb-0">
+          <div className="lg:pl-15 inline-flex flex-col items-start cursor-default">
             <div className="w-[140px] h-20 relative">
               <div className="absolute top-0 left-0 inline-flex items-center origin-left scale-80">
                 <div className="w-20 h-20 flex items-center justify-center border-2 border-black relative">
@@ -131,14 +130,14 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-[clamp(16px,2.5vw,32px)] text-red-950 font-semibold pt-10 w-2/3 pl-15">
+          <p className="text-[clamp(16px,2.5vw,32px)] text-red-950 font-semibold pt-10 w-full lg:w-2/3 lg:pl-15">
             Sinonimo di stile, qualità e attenzione al cliente.
           </p>
-          <p className="text-[clamp(14px,1.5vw,24px)] font-light pt-10 w-2/3 pl-15">
+          <p className="text-[clamp(14px,1.5vw,24px)] font-light pt-10 w-full lg:w-2/3 lg:pl-15">
             Designer esperti e servizi su misura trasformano ogni spazio in un
-            progetto d’arredo esclusivo e curato in ogni dettaglio.
+            progetto d'arredo esclusivo e curato in ogni dettaglio.
           </p>
-          <div className="pt-10 pl-15">
+          <div className="pt-10 pl-0 sm:pl-15">
             <button className="relative px-6 py-2 font-semibold tracking-widest overflow-hidden group bg-white">
               <span className="absolute left-0 top-0 h-full w-1/4 bg-red-950 transition-all duration-500 ease-in-out group-hover:w-full" />
               <span className="relative z-10 text-white mix-blend-difference">
@@ -149,7 +148,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* DESTRA - IMMAGINI SCORREVOLI */}
-        <div className="flex flex-col gap-10 sm:gap-15 lg:gap-20 w-full lg:w-1/2 items-center">
+        <div className="flex flex-col gap-6 lg:gap-10 w-full lg:w-1/2 items-center">
           <div className="relative w-full">
             <img
               src={montaggio}
