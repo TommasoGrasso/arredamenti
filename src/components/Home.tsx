@@ -7,7 +7,8 @@ import modifiche from "../assets/modifica.jpg";
 import montaggio from "../assets/montaggi.webp";
 import progettazione from "../assets/progettazione.jpg";
 import assistenza from "../assets/assistenza.webp";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Home: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
       style={{ backgroundImage: `url(${homepic})` }}
     >
       <Navbar />
+      <h1 className="sr-only">Fino Arredamenti – Arredo su misura dal 1991</h1>
       <div className="absolute inset-0 bg-black opacity-45"></div>
       <div className="flex items-center gap-25 flex-col justify-center h-full">
         <img
@@ -80,15 +82,15 @@ const Home: React.FC = () => {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
             />
             <div
               className={`absolute top-0 left-0 w-full h-full ${video.overlay}`}
             ></div>
             <div className="relative z-10 flex flex-col items-start justify-center h-full text-left text-white px-8">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+              <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
                 {video.title}
-              </h1>
+              </h2>
               <p className="font-light md:text-xl opacity-90">
                 {video.describtion}
               </p>
@@ -152,8 +154,9 @@ const Home: React.FC = () => {
           <div className="relative w-full">
             <img
               src={montaggio}
-              alt="Montaggio"
+              alt="Servizio di montaggio e consegna per i nostri clienti"
               className="w-full h-auto shadow-md object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
               <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
@@ -169,8 +172,9 @@ const Home: React.FC = () => {
           <div className="relative w-full">
             <img
               src={modifiche}
-              alt="Modifiche"
+              alt="Modifiche e personalizzazioni di arredo su misura"
               className="w-full h-auto shadow-md object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
               <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
@@ -186,8 +190,9 @@ const Home: React.FC = () => {
           <div className="relative w-full">
             <img
               src={assistenza}
-              alt="Assistenza"
+              alt="Assistenza post vendita per ogni esigenza"
               className="w-full h-auto shadow-md object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
               <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
@@ -203,8 +208,9 @@ const Home: React.FC = () => {
           <div className="relative w-full">
             <img
               src={progettazione}
-              alt="Progettazione"
+              alt="Progettazione su misura per ogni necessità"
               className="w-full h-auto shadow-md object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/50 to-transparent flex flex-col justify-end p-4 sm:p-6">
               <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-semibold uppercase mb-1 sm:mb-2">
@@ -218,6 +224,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
