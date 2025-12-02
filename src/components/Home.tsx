@@ -95,13 +95,13 @@ const Home: React.FC = () => {
                 {video.describtion}
               </p>
               <div className="flex gap-4 pt-5">
-                <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
+                <button className="relative text-left px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
                   <span className="absolute left-0 top-0 h-full w-1/3 sm:w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
-                  <span className="relative z-10">CATALOGO COMPLETO</span>
+                  <span className="relative z-10 text-xs sm:text-sm md:text-base">CATALOGO COMPLETO</span>
                 </button>
-                <button className="relative px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
+                <button className="relative text-left px-6 py-2 font-semibold tracking-widest text-white overflow-hidden group">
                   <span className="absolute left-0 top-0 h-full w-1/3 sm:w-1/6 bg-red-950 backdrop-blur-md transition-all duration-500 ease-in-out group-hover:w-full group-hover:bg-red-950" />
-                  <span className="relative z-10">RICHIEDI INFORMAZIONI</span>
+                  <span className="relative z-10 text-xs sm:text-sm md:text-base">RICHIEDI INFORMAZIONI</span>
                 </button>
               </div>
             </div>

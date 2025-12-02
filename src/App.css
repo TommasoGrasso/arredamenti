@@ -7,3 +7,8 @@ body {
 button, a {
   cursor: pointer;
 }
+
+::selection {
+  background-color: #450a0a; /* red-950 */
+  color: white; /* colore del testo selezionato */
+}

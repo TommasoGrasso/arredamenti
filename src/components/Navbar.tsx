@@ -12,6 +12,10 @@ const Navbar: React.FC = () => {
   const [bgState, setBgState] = useState<"transparent" | "red" | "white">(
     "transparent"
   );
+  const [lockedBgState, setLockedBgState] = useState<
+    null | "transparent" | "red" | "white"
+  >(null);
+
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
@@ -64,7 +68,10 @@ const Navbar: React.FC = () => {
 
   // CAMBIO SFONDO NAVBAR DURANTE LO SCROLL
   useEffect(() => {
+    if (isOpen) return;
+
     let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
       const current = window.scrollY;
       const nearTop = current < 50;
@@ -79,11 +86,13 @@ const Navbar: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isOpen]);
 
   // ANIMAZIONE COLORE NAVBAR
   useEffect(() => {
     if (!navRef.current) return;
+
+    const stateToApply = lockedBgState ?? bgState;
 
     const colors = {
       transparent: "rgba(255,255,255,0)",
@@ -98,11 +107,11 @@ const Navbar: React.FC = () => {
     };
 
     gsap.to(navRef.current, {
-      backgroundColor: colors[bgState],
-      color: textColors[bgState],
+      backgroundColor: colors[stateToApply],
+      color: textColors[stateToApply],
       duration: 0.4,
     });
-  }, [bgState]);
+  }, [bgState, lockedBgState]);
 
   return (
     <div
@@ -174,7 +183,10 @@ const Navbar: React.FC = () => {
           {/* PULSANTE MENU MOBILE */}
           <button
             className="md:hidden"
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              setLockedBgState(bgState); // congela il colore attuale!
+              setIsOpen(true);
+            }}
             aria-label="Apri menu mobile"
           >
             <Menu size={28} />
@@ -188,7 +200,10 @@ const Navbar: React.FC = () => {
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
             }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              setLockedBgState(null); // sblocca colore!
+            }}
           />
 
           {/* SIDEBAR MOBILE */}
@@ -197,9 +212,35 @@ const Navbar: React.FC = () => {
             transform transition-all duration-500 ease-out
             ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           >
+            {/* MINI LOGO IN ALTO A SINISTRA */}
+            <div className="text-white absolute top-6 left-6 scale-95 origin-left">
+              <div className="inline-flex flex-col items-start cursor-pointer">
+                <div className="w-[70px] h-10 relative">
+                  <div className="absolute top-0 left-0 inline-flex items-center transition-all">
+                    <div className="w-10 h-10 flex items-center justify-center border-2 relative cursor-pointer">
+                      <span className="text-2xl font-[Oswald] font-light tracking-widest translate-x-2 translate-y-1">
+                        F
+                      </span>
+                    </div>
+                    <span className="ml-1 mt-3 text-2xl font-[Oswald] font-light tracking-widest">
+                      INO
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full flex justify-center mt-2">
+                  <span className="text-xs font-[Oswald] font-light tracking-[0.2em] whitespace-nowrap">
+                    ARREDAMENTI
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* CHIUDI */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                setLockedBgState(null);
+              }}
               className="absolute top-10 right-6 text-white hover:rotate-90 transition-all"
             >
               <X size={32} />
