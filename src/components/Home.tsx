@@ -10,50 +10,12 @@ import assistenza from "../assets/assistenza.webp";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useState, useRef, useEffect } from "react";
+import { useState, lazy, Suspense } from "react";
+
+const ChatBox = lazy(() => import("./Chatbox"));
 
 const Home: React.FC = () => {
   const [activeChatIndex, setActiveChatIndex] = useState<number | null>(null);
-
-  const [messages, setMessages] = useState([
-    { from: "bot", text: "Benvenuto! Come possiamo aiutarti?" },
-  ]);
-  const [input, setInput] = useState("");
-  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const sendMessage = () => {
-    if (!input.trim()) return;
-
-    setMessages((prev) => [...prev, { from: "user", text: input }]);
-    setInput("");
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          from: "bot",
-          text: "Grazie per il tuo messaggio! Ti risponderemo presto.",
-        },
-      ]);
-    }, 600);
-  };
-
-  // scroll automatico
-  useEffect(() => {
-    const c = messagesContainerRef.current;
-    if (!c) return;
-
-    // Scroll immediato per assestare la posizione
-    c.scrollTop = c.scrollHeight;
-
-    // Leggero delay per eseguire uno scroll smooth fluido e preciso
-    requestAnimationFrame(() => {
-      c.scrollTo({
-        top: c.scrollHeight,
-        behavior: "smooth",
-      });
-    });
-  }, [messages]);
 
   return (
     <div
@@ -173,63 +135,9 @@ const Home: React.FC = () => {
 
               {/* CHATBOX LOCALE ALLA SEZIONE */}
               {activeChatIndex === index && (
-                <div
-                  className="absolute top-[12%] right-0 h-[76%] w-[40%]
-                  bg-white border-2 border-red-950 shadow-2xl 
-                  p-6 text-black z-30 flex flex-col animate-[fadeIn_0.3s_ease]"
-                >
-                  {/* HEADER */}
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-bold text-red-950 tracking-wide">
-                      Assistenza Clienti
-                    </h3>
-                    <button
-                      onClick={() => setActiveChatIndex(null)}
-                      className="text-gray-600 hover:text-red-950 transition text-2xl"
-                    >
-                      ✕
-                    </button>
-                  </div>
-
-                  {/* AREA MESSAGGI */}
-                  <div className="flex-1 border border-gray-300 p-4 overflow-y-auto space-y-3">
-                    {messages.map((msg, i) => (
-                      <div
-                        key={i}
-                        className={`p-3 text-sm max-w-[80%] rounded ${
-                          msg.from === "user"
-                            ? "ml-auto bg-gray-100 text-black border border-gray-300"
-                            : "mr-auto bg-red-50 text-red-900 border border-red-200"
-                        }`}
-                      >
-                        {msg.text}
-                      </div>
-                    ))}
-                    <div
-                      className="flex-1 overflow-y-auto p-3 space-y-3 bg-gray-50"
-                      ref={messagesContainerRef}
-                    ></div>
-                  </div>
-
-                  {/* INPUT */}
-                  <div className="mt-5 border border-gray-300 flex items-center">
-                    <input
-                      type="text"
-                      placeholder="Scrivi un messaggio..."
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                      className="w-full p-3 text-sm outline-none"
-                    />
-
-                    <button
-                      onClick={sendMessage}
-                      className="px-4 text-red-950 font-bold hover:text-red-700 text-xl"
-                    >
-                      ➤
-                    </button>
-                  </div>
-                </div>
+                <Suspense fallback={<div></div>}>
+                  <ChatBox onClose={() => setActiveChatIndex(null)} />
+                </Suspense>
               )}
             </div>
           </section>
@@ -240,18 +148,18 @@ const Home: React.FC = () => {
       </div>
 
       {/* BLOCCO TESTO + IMMAGINI */}
-      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between px-4 py-8 lg:px-0 lg:py-0">
+      <div className="flex  flex-col lg:flex-row lg:items-start lg:justify-between px-4 py-8 lg:px-0 lg:py-0">
         {/* SINISTRA */}
-        <div className="w-full pt-10 lg:w-1/2 lg:pr-8 lg:mt-20 lg:sticky lg:top-20 lg:self-start mb-8">
-          <div className="lg:pl-15 inline-flex flex-col items-start cursor-default">
-            <div className="w-[140px] h-20 relative">
+        <div className="w-full pl-5 pt-10 lg:w-2/5 lg:pr-8 lg:mt-20 lg:sticky lg:top-20 lg:self-start mb-8">
+          <div className="inline-flex flex-col items-start cursor-default">
+            <div className="w-[100px] h-20 relative">
               <div className="absolute top-0 left-0 inline-flex items-center origin-left scale-80">
                 <div className="w-20 h-20 border-2 border-black flex items-center justify-center">
-                  <span className="text-black text-5xl font-[Oswald] font-light">
+                  <span className="text-black pt-6 scale-98 pl-14 text-5xl font-[Oswald] font-light">
                     F
                   </span>
                 </div>
-                <span className="mt-6 text-black text-5xl font-[Oswald] font-light">
+                <span className="mt-6 ml-1 text-black text-5xl font-[Oswald] font-light">
                   INO
                 </span>
               </div>

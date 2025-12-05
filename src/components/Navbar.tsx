@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
   return (
     <div
       ref={navRef}
-      className="fixed z-20 top-0 left-0 w-full p-4 flex justify-between items-center transition-colors"
+      className="fixed z-20 top-0 left-0 w-full pl-4 pt-2 flex justify-between items-center transition-colors"
       style={{
         backgroundColor: "rgba(255,255,255,0)",
         color: "white",
@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
     >
       {bgState === "red" ? (
         // NAVBAR ROSSA (SCROLL)
-        <div className="w-full flex justify-center space-x-12">
+        <div className="w-full pt-1.5 p-4 flex justify-center space-x-12">
           <a href="/assistenza" className="text-white hover:text-gray-300">
             Assistenza
           </a>
@@ -135,9 +135,9 @@ const Navbar: React.FC = () => {
       ) : (
         <>
           {/* LOGO */}
-          <div className="inline-flex flex-col items-start cursor-pointer">
+          <div className="inline-flex flex-col items-start cursor-pointer scale-90 origin-left">
             <div className="w-[100px] h-14 relative">
-              <div className="absolute top-0 left-0 inline-flex items-center transition-all scale-90 origin-left">
+              <div className="absolute top-0 left-0 inline-flex items-center transition-all scale-100 origin-left">
                 <div className="w-14 h-14 flex items-center justify-center border-2 relative cursor-pointer">
                   <span className="text-3xl font-[Oswald] font-light tracking-widest transform translate-x-4.5 translate-y-2">
                     F
@@ -148,6 +148,7 @@ const Navbar: React.FC = () => {
                 </span>
               </div>
             </div>
+
             <div className="w-full flex justify-center mt-0.5 transition-all">
               <span className="text-base font-[Oswald] font-light tracking-[0.2em] z-20 whitespace-nowrap">
                 ARREDAMENTI
@@ -182,7 +183,7 @@ const Navbar: React.FC = () => {
 
           {/* PULSANTE MENU MOBILE */}
           <button
-            className="md:hidden"
+            className="md:hidden pr-5"
             onClick={() => {
               setLockedBgState(bgState); // congela il colore attuale!
               setIsOpen(true);
@@ -218,11 +219,11 @@ const Navbar: React.FC = () => {
                 <div className="w-[70px] h-10 relative">
                   <div className="absolute top-0 left-0 inline-flex items-center transition-all">
                     <div className="w-10 h-10 flex items-center justify-center border-2 relative cursor-pointer">
-                      <span className="text-2xl font-[Oswald] font-light tracking-widest translate-x-2 translate-y-1">
+                      <span className="text-2xl ml-2 font-[Oswald] font-light tracking-widest translate-x-2 translate-y-1">
                         F
                       </span>
                     </div>
-                    <span className="ml-1 mt-3 text-2xl font-[Oswald] font-light tracking-widest">
+                    <span className="ml-1 mt-2 text-2xl font-[Oswald] font-light tracking-widest">
                       INO
                     </span>
                   </div>
@@ -283,7 +284,7 @@ const Navbar: React.FC = () => {
                 aria-label="Facebook"
                 className="group"
               >
-                <div className="w-11 h-11 flex items-center justify-center rounded-full bg-red-900 text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
+                <div className="w-11 h-11 flex items-center justify-center rounded-full text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"
@@ -302,7 +303,7 @@ const Navbar: React.FC = () => {
                 aria-label="Instagram"
                 className="group"
               >
-                <div className="w-11 h-11 flex items-center justify-center rounded-full bg-red-900 text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
+                <div className="w-11 h-11 flex items-center justify-center rounded-full text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"
@@ -321,9 +322,9 @@ const Navbar: React.FC = () => {
                 aria-label="WhatsApp"
                 className="group"
               >
-                <div className="w-11 h-11 flex items-center justify-center rounded-full bg-red-900 text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
+                <div className="w-11 h-11 flex items-center justify-center rounded-full text-white transition-all duration-300 group-hover:bg-white group-hover:text-red-900 group-hover:scale-110">
                   <svg
-                    className="w-6 h-6"
+                    className="w-8 h-8"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
