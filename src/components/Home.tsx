@@ -18,10 +18,13 @@ const Home: React.FC = () => {
   const [activeChatIndex, setActiveChatIndex] = useState<number | null>(null);
 
   return (
-    <div
-      className="relative h-screen bg-cover bg-center lazyload--progressive lazyautosizes lazyloaded"
-      style={{ backgroundImage: `url(${homepic})` }}
-    >
+    <div className="relative h-screen bg-cover bg-center lazyload--progressive lazyautosizes lazyloaded">
+      <img
+        src={homepic}
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
       <Navbar />
 
       <h1 className="sr-only">Fino Arredamenti – Arredo su misura dal 1991</h1>
